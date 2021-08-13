@@ -50,7 +50,7 @@ I will be doing my best to keep to the above schema for each set of notes, but t
 
 ### 5. Content Within This Repo
 
-The contents of this repo is two-fold. Firstly (and most importantly), the content is a set of pseudo-academically written notes for the [Plutus Pioneer Program](https://testnets.cardano.org/en/plutus-pioneer-program/) [[3]](#3), which follow the formatting as outlined in §5. Secondly, a set of academic papers which I have deemed to be of greatest importance **to me** is also provided. In addition, these papers will (slowly, but surly) be printed out, annotated and scanned. Shortly thereafter, these scans will be re-uploaded to this repo.
+The contents of this repo is two-fold. Firstly (and most importantly), the content is a set of pseudo-academically written notes for the [Plutus Pioneer Program](https://testnets.cardano.org/en/plutus-pioneer-program/) [[3]](#3), which follow the formatting as outlined in §4. Secondly, a set of academic papers which I have deemed to be of greatest importance **to me** is also provided. In addition, these papers will (slowly, but surely) be printed out, annotated and scanned. Shortly thereafter, these scans will be re-uploaded to this repo.
 
 This repo will **forever and always** remain open, unless instructed otherwise by a member of the Cardano organisation or by an employee of IOHK.
 
