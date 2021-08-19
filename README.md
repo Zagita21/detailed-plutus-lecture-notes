@@ -2,6 +2,8 @@
 
 *The Second Cohort Of The Plutus Pioneer Programme*
 
+***In my humble opinion, Cardano is to Blockchains what Linux is to Kernels.***
+
 ### 1. Authors Note
 
 I have made the decision to begin making notes and documenting all lectures and exercises found within the Plutus Pioneer Program (cohort two). The writing style will be two-fold: technical, but creative. This is for numerous reasons. Firstly, writing does aid the cognitive ability to solve problems [[1]](#1), Plutus is a new platform, Plutus-core is a new language, Haskell is somewhat unique and understanding aspects of how this whole system fits together requires an element of creative thinking and problem solving. Similarly, these technologies <sup>[1](#fn1)</sup> are novel in nature, as such, it may be required to do some creative writing in order to explore new potential ideas.
@@ -11,6 +13,12 @@ I've been using distributed ledgers and blockchain consensus algorithms for over
 I would like to express my gratitude to IOHK for constructing this program and accepting me as a candidate. Furthermore, I would like to thank my family for their continual support in my efforts to pursue a career path which isn't thought to be conventional.
 
 I believe I can speak for the entire community when I extend my sincerest thanks to the world class engineers and scientists who have contributed to building Cardano as of current. Charles, you will are and will continue to be an inspiration to us all and to the world. I hope we can all collectively strive to make positive societal change.
+
+### 1.1 Updates
+
+*14th AUG: Exciting times! Alonzo Purple Test Net is available to a subset of the pioneers. The Hard Fork on the Main Net is due 12th of September (what a great birthday present). We will see the implementation of MetaData, Native Assets and SMART CONTRACT FUNCTIONALITY. The one thing I would warn people about, and this is purely my own subjective opinion, is: don't expect too much to happen all at once. I get this feeling that people think that as soon as smart contracts are available the price of ADA is going to explode. Firstly, it's never been about the price. Secondly, we're writing Smart Contracts in Haskell (which isn't HUGELY adopted within industry [[9]](#9)), I believe we've chosen the right tool for the job, but adoption may take some time. Furthermore, the Catalyst projects may take a while to get going and finally, there are literally only a couple of thousand developers (at most) that can write Plutus. Plutus is basically Haskell, so maybe I'm overblowing it here, but you do still need to know the gotchas. For example: compiling parameterised validators, if I remember correctly, requires a specific knowledge of Plutus, because standard oxford brackets simply will not compile. It would be nice to see hundreds of new products and platforms instantaneously using Cardano Smart Contracts, but I'm just a little skeptical. However, I do hold the following opinion:*
+
+There is only one way from here on, and that's up.
 
 ### 2. Preface
 
@@ -62,7 +70,7 @@ But, to reduce the scope a little bit and be somewhat more realistic, the intend
 
 ### 7. Why These Notes May Be Helpful
 
-*In Progress*
+First and foremost, these notes are likely most helpful to me. You do not understand something unless you can explain it. So, if you can write it, you can explain **something**, whether or not that **something** is correct is another matter. My hope is that most of what I do write **is correct** or that somebody reads it and corrects me (either via a direct message, but I would encourage open collaboration). However, once I have finished this program (and I will), and once I have got a **real firm grasp** on Haskell (and I will) and finally, after I have meticulously written and re-written every set of lecture notes (and I will), then this repo may be hugely benefitial to other people. That is the aim with this paricular set of notes and that is why I believe these notes may be hepful.
 
 ### 8. Contributing
 
@@ -76,31 +84,46 @@ But, to reduce the scope a little bit and be somewhat more realistic, the intend
  - [Lecture Four](4-Lecture-Four.md): Monads, The EmulatorTrace Monad, Contract Monad, Homework
  - [Lecture Five](5-Lecture-Five.md): EUTxO Values, Plutus: Native Tokens (Minting and Burning)
  - [Lecture Six](6-Lecture-Six.md): Oracles, Core module, Swap module, Funds Module, Test Module, PAB & Front-ends
- - [Lecture Seven](): -
- - [Lecture Eight](): -
- - [Lecture Nine](): -
+ - [Lecture Seven](): Committal Schemes, State Machines, Maintaining State Using Datum, NFTs and 'Thread' 
+ - [Lecture Eight](): More State Machines? And Testing... *Note: Not Yet Quite There...*
+ - [Lecture Nine](): Marlowe
  - [Lecture Ten](): -
 
-*Note: Currently Writing Notes On All Lectures Marked With '-'*
+*Note: Currently Unwritten Notes are Marked With '-' unless stated otherwise.*
 
 ### 10. Summary
 
-*In Progress*
+As an accepted candidate for the second cohort (my first cohort e-mail landed in my junk mail), I have decided to write a set of notes for each and every lecture in the hope that it will help me learn, but in addition, it will help others. These are not strictly technical notes, there is some creative flair (at least I would like to think so), so you may even enjoy the read. I have a few years experience in industry as a web developer, software engineer and machine learning engineer. I got my UG @ the University of Manchester and my PG @ the University of Edinburgh. Formatting is suppose to be (be isn't hugely) consistent. My intended audience is mainly other Plutus Pioneers or those who wish to learn and are outside of the program. Anyone is free to contribute and feel free to flick through each lecture as is listed above.
 
 ### 11. Nomenclature
 
 * UTxO: A model of accounting used to identify how much 'money' (in this case: a digital 'currency') any 'wallet' has access to (in the context of 'cryptocurrencies'<sup><a href="#fn1">1</a></sup>.
 * EUTxO: An extended model of UTxO. The fundamentals remain the same. Thus, transactions are made up of numerous inputs, which themselves are unspent transaction outputs. However, there are some modifications to the model which are important. These modifications allow for more general transactions through the use of arbitrary logic [[8]](#8).
+* Cardano-node: core component for facilitating PoS consensus through the operation of a <code>pool</code>. It is important to note that others can delegate to a <code>pool</code>, but as of right now, will not earn the same kind of annual RoA (return on ada) as an operator (if I understand Ouroborous 2019 correctly, although it does seem to try and reward more equally, I would, however, think that you're going to see a distribution of stake that follows a fairly random walk amongst the majority of DPoS. I was reading that paper **a while ago**, but if I remember correctly, it was optimal to have as any DPoS wallets as possible with a with a fairly even distribution of ADA across the participants, whilst the SPO had as much ADA as possible, which almost strikes a little bit of fear into me. The reason why is because it sounds as though the larger the ownership - stake - the larger the reward, so long as the threshold for being an SPO is passed and you can encourage people to delegate to your pool; it encourages centralisation, doesn't it? I just hope I did the math wrong!).
+* cardano-cli: command line interface for Cardano.
+* cardano-wallet: HTTP server and command line for managing on-chain UTxOs.
+* cardano-db-sync: postgreSQL for storing blocks and transactions.
+* cardano-graphql: similar to FB api, it's easy to understand why. You have a load of wallets with keys in them (think of these as 'people' - they're not though, they're wallets) and you have a bunch of connections between them called Unspent Transaction Outputs. You also have a load of transactions, so a graph seems like an appropriate data structure to me to represent this kind of data (wallets and Txs are nodes, UTxOs are edges).
+* cardano-rosetta: DevOps for Blockchain? This is pretty new to me, but I am familiar with Terraform, Packer, Ansible, I think I aspired (at one point) to master kubernettes and some other technology that I can't remember, but that was obviously quite short lived.
+* cardano-addresses: for backing up wallets (key phrases) - a module.
+* cardano-ledger-specs: formal specification for current release.
+* bech32: Haskell implementation of bech32 (I'm going to pretend I know what that means).
+* smash: powers SPOs - metadata aggregation server and keeps track of whos staking what.
+* ouroboros-network: they used fancy words, I'm just going to call this the Cardano Blockchain Consensus Algorithm. 
 * Plutus-Platform: an application development platform for developing distributed applications using the Cardano blockchain [[5]](#5).
 * Compiler: A compiler takes some source code, and produces an output in another language, while the retaining meaning of the source. <code>Source -> (analysis) -> Compiler -> (Synthesis) -> Target.</code> [[4]](#4)
 * plutus-tx: The compiler which is responsible for transforming Plutus (which is a subset of Haskell) into Plutus-core [[6]](#6).
 * plutus-core: What high level languages are to assembly language, Plutus is to Plutus-core [[7]](#7). From what I understand, plutus-core is essentially: System F omega with (equi-)recursive types.
+* AssetClass: A native token that exists on the Cardano blockchain.
+* Minting: the process of creating a set of native tokens or an NFT.
+* Burning: the process of destroying a native token.
 
 *More Items Are Continued To Be Added As Time Elapses.*
 
 ### 12. StackExchange (Cardano) Answers:
 
 1. [What exactly is a redeemer?](https://cardano.stackexchange.com/questions/471/what-exactly-is-a-redeemer/2208#2208)
+2. [How to compile plutus source code locally?](https://cardano.stackexchange.com/questions/2346/how-to-compile-plutus-source-code-locally/2354#2354)
 
 ### 13. References
 
@@ -147,6 +170,11 @@ Chakravarty, M.M., Chapman, J., MacKenzie, K., Melkonian, O., Jones, M.P. and Wa
 The extended UTXO model. <br />
 In International Conference on Financial Cryptography and Data Security (pp. 525-539). Springer, Cham. <br />
 
+<a href="#9" id="9">[9]</a>
+Rabai, B.A., 2015. <br />
+Programming Language Use in US Academia and Industry. <br />
+Informatics in Education, 14(2), pp.143-160. <br />
+
 ### 14. Footnotes
 
 <a id="fn1">1.</a> The technologies I am referencing are Distributed Ledgers and Blockchain Consensus Algorithms — 'cryptocurrencies'.
@@ -157,33 +185,32 @@ In International Conference on Financial Cryptography and Data Security (pp. 525
 
 15.2: Contracts can remain 'stale' forever (if nobody changes their state by initiating a change of state at that 'script' or EUTxO address).
 
-### 16. Appendix B
+### 16. Appendix B: Images
+
+**16.1: Plutus/V1/Ledger/Value.hs Constructor:**
+
+![./img/map-to-map.jpg](./img/map-to-map.jpg)
+
+<br />
+
+**16.2: Committal Scheme:**
+
+![./img/commit-scheme.jpg](./img/commit-scheme.jpg)
+
+### 17. Appendix: Additional Tables
 
 *In Progress*
 
  
 
-### 17. Appendix: Additional Images
+### 18. Appendix: Additional Literature
 
 *In Progress*
 
  
 
-### 18. Appendix: Additional Tables
-
-*In Progress*
-
- 
-
-### 19. Appendix: Additional Literature
-
-*In Progress*
-
- 
-
-### 20. TODO
+### 19. TODO
 
 1. Correct any errors within any of my current lecture notes.
 2. Continue to include references and footnotes within all lecture notes.
-3. Finish the *In Progress* sections within this README.md.
-4. Catch up to and finish Lecture Seven ASAP.
+4. Catch up to and finish Lecture Eight ASAP.
